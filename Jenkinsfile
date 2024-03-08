@@ -1,16 +1,15 @@
 @Library('github.com/releaseworks/jenkinslib') _
 pipeline {
     agent any
-     options {
-        // Use .NET SDK Support plugin build wrapper
-        dotnetSdkInstaller(version:'1.4.0')
-    }
+  
     stages {
       
         
         stage('Restore') {
             steps {
-               dotnetRestore()
+                script {
+                        sh 'dotnet restore'
+                    }
             }
         }
         

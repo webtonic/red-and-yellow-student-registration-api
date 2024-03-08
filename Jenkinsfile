@@ -8,7 +8,7 @@ pipeline {
         stage('Restore') {
             steps {
                 script {
-                        sh 'dotnet restore'
+                        sh 'dotnetRestore'
                     }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'dotnet build'
+                    sh 'dotnetBuild'
                 }
             }
         }
@@ -24,8 +24,8 @@ pipeline {
         stage('Test') {
             
                 steps {
-                // Run tests using dotnetTest builder
-                dotnetTest()
+           
+                sh 'dotnetTest'
             }
             
         }
@@ -33,7 +33,7 @@ pipeline {
         stage('Publish') {
             steps {
                 // Publish the .NET project using dotnetPublish builder
-                dotnetPublish()
+               sh 'dotnetPublish'
             }
         }
     }

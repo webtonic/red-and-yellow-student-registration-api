@@ -1,39 +1,39 @@
 @Library('github.com/releaseworks/jenkinslib') _
 pipeline {
     agent any
-    
+     options {
+        // Use .NET SDK Support plugin build wrapper
+        dotnetSdkInstaller()
+    }
     stages {
       
         
         stage('Restore') {
             steps {
-                script {
-                    sh   'dotnetRestore'
-                }
+               dotnetRestore()
             }
         }
         
         stage('Build') {
             steps {
-                script {
-                    sh   'dotnetBuild'
-                }
+              // Build the .NET project using dotnetBuild builder
+                dotnetBuild()
             }
         }
         
         stage('Test') {
-            steps {
-                script {
-                    sh   'dotnetTest'
-                }
+            
+                steps {
+                // Run tests using dotnetTest builder
+                dotnetTest()
             }
+            
         }
         
         stage('Publish') {
             steps {
-                script {
-                    sh   'dotnetPublish publish -c Release -o ./publish'
-                }
+                // Publish the .NET project using dotnetPublish builder
+                dotnetPublish()
             }
         }
     }

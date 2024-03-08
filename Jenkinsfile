@@ -8,7 +8,7 @@ pipeline {
         stage('Restore') {
             steps {
                 script {
-                    bat   '"dotnetRestore'
+                    sh   '"dotnetRestore'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    bat   '"dotnetBuild'
+                    sh   '"dotnetBuild'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    bat   '"dotnetTest'
+                    sh   '"dotnetTest'
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    bat   '"dotnetPublish" publish -c Release -o ./publish'
+                    sh   '"dotnetPublish" publish -c Release -o ./publish'
                 }
             }
         }

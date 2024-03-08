@@ -13,25 +13,21 @@ pipeline {
         
         stage('Build') {
             steps {
-                script {
-                    sh 'dotnetBuild'
-                }
+                    dotnetBuild()                
             }
         }
         
         stage('Test') {
             
                 steps {
-           
-                sh 'dotnetTest'
+                   dotnetTest()
             }
             
         }
         
         stage('Publish') {
             steps {
-                // Publish the .NET project using dotnetPublish builder
-               sh 'dotnetPublish'
+               dotnetPublish()
             }
         }
     }

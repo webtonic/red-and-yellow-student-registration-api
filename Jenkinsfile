@@ -3,11 +3,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/webtonic/red-and-yellow-student-registration-api.git'
-            }
-        }
+      
         
         stage('Restore') {
             steps {

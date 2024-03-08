@@ -1,8 +1,6 @@
 @Library('github.com/releaseworks/jenkinslib') _
 pipeline {
-    agent {
-         label 'windows'
-    }
+    agent any
     
     stages {
       
@@ -10,7 +8,7 @@ pipeline {
         stage('Restore') {
             steps {
                 script {
-                    bat   '"dotnet" restore'
+                    bat   '"dotnetRestore'
                 }
             }
         }
@@ -18,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    bat   '"dotnet" build'
+                    bat   '"dotnetBuild'
                 }
             }
         }
@@ -26,7 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    bat   '"dotnet" test'
+                    bat   '"dotnetTest'
                 }
             }
         }
@@ -34,7 +32,7 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    bat   '"dotnet" publish -c Release -o ./publish'
+                    bat   '"dotnetPublish" publish -c Release -o ./publish'
                 }
             }
         }

@@ -3,7 +3,7 @@ pipeline {
     agent any
      options {
         // Use .NET SDK Support plugin build wrapper
-        dotnetSdkInstaller()
+        dotnetSdkInstaller(version:'1.4.0')
     }
     stages {
       
@@ -16,8 +16,9 @@ pipeline {
         
         stage('Build') {
             steps {
-              // Build the .NET project using dotnetBuild builder
-                dotnetBuild()
+                script {
+                    sh 'dotnet build'
+                }
             }
         }
         

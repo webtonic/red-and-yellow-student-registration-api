@@ -4,7 +4,7 @@ pipeline {
     agent any
    tools {
         // Define the .NET SDK tool
-        dotnet 'dotnet-sdk-6.0.27'
+        dotnetsdk 'dotnet-sdk-6.0.27'
     }
 
     stages {

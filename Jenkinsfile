@@ -2,14 +2,13 @@
 
 pipeline {
     agent any
-  
+   tools {
+        // Define the .NET SDK tool
+        dotnet 'dotnet-sdk-6.0.27'
+    }
+
     stages {
-        stage('Setup') {
-            steps {
-                // Define the .NET SDK tool
-                tool name: 'dotnet-sdk-6.0.27', type: 'netSDK'
-            }
-        }
+       
 
         stage('Restore') {
             steps {

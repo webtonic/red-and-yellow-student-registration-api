@@ -1,37 +1,37 @@
 @Library('github.com/releaseworks/jenkinslib') _
+
 pipeline {
     agent any
   
     stages {
-      
-         tools {
-        // Define the .NET SDK tool
-         netSDK
-        dotnet 'dotnet-sdk-6.0.27' // This is just an example version, replace it with the version you need
-    }
+        stage('Setup') {
+            steps {
+                // Define the .NET SDK tool
+                tool name: 'dotnet-sdk-6.0.27', type: 'netSDK'
+            }
+        }
+
         stage('Restore') {
             steps {
-                dotnetRestore
+                dotnetRestore()
             }
         }
         
         stage('Build') {
             steps {
-                    dotnetBuild             
+                dotnetBuild()
             }
         }
         
         stage('Test') {
-            
-                steps {
-                   dotnetTest
+            steps {
+                dotnetTest()
             }
-            
         }
         
         stage('Publish') {
             steps {
-               dotnetPublish
+                dotnetPublish()
             }
         }
     }
